@@ -1,4 +1,5 @@
 import "./login.css";
+import { Link } from "react-router-dom";
 
 function Login() {
   return (
@@ -8,6 +9,8 @@ function Login() {
         <span>Log In</span>
       </div>
       <div className="log-in-form-container">
+      <h1>Log in Page</h1>
+
         <form className="log-in-form">
           <label>E-mail :</label>
           <br />
@@ -17,9 +20,9 @@ function Login() {
           <br />
           <input type="text" className="input-label" />
           <br />
-          <div className="submit-btn-container">
+          <Link to='/personalDetailsPage'><div className="submit-btn-container">
             <input type="submit" value="Log In" />
-          </div>
+          </div></Link>
         </form>
       </div>
     </div>

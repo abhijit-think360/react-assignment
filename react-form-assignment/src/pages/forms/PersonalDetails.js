@@ -1,4 +1,6 @@
 import "./PersonalDetails.css";
+import { Link } from "react-router-dom";
+
 
 function PersonalDetails() {
   return (
@@ -8,6 +10,7 @@ function PersonalDetails() {
         <span>Log In</span>
       </div>
       <div className="personal-details-form-container">
+        <h1>Personal Details Page</h1>
         <form className="personal-details-form">
           <label>First Name :</label>
           <br />
@@ -17,9 +20,13 @@ function PersonalDetails() {
           <br />
           <input type="text" className="input-label" />
           <br />
-          <div className="submit-btn-container">
-            <input type="button" value="Next" />
-          </div>
+          <Link to='/personalDetailsPage'><div className="submit-btn-container">
+            <input type="submit" value="Next" />
+          </div></Link>
+          <br/>
+          <Link to='/'><div className="submit-btn-container">
+            <input type="submit" value="Previous" />
+          </div></Link>
         </form>
       </div>
     </div>

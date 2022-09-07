@@ -1,6 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import Login from "./pages/login.js";
+import HomePage from "./pages/HomePage";
 // import PersonalDetails from "./pages/forms/PersonalDetails";
 // import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
@@ -23,7 +24,7 @@ function App() {
     //     </header>
     //   </div>
     // );
-    Login()
+    HomePage()
   );
   // personalDetails());
 }

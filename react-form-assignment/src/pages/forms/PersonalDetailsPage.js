@@ -1,8 +1,8 @@
-import "./PersonalDetails.css";
+import "./PersonalDetailsPage.css";
 import { Link } from "react-router-dom";
 
 
-function PersonalDetails() {
+function PersonalDetailsPage() {
   return (
     <div className="personal-details-page">
       <div className="header">
@@ -20,12 +20,8 @@ function PersonalDetails() {
           <br />
           <input type="text" className="input-label" />
           <br />
-          <Link to='/personalDetailsPage'><div className="submit-btn-container">
+          <Link to='/govtIdDetailsPage'><div className="submit-btn-container">
             <input type="submit" value="Next" />
-          </div></Link>
-          <br/>
-          <Link to='/'><div className="submit-btn-container">
-            <input type="submit" value="Previous" />
           </div></Link>
         </form>
       </div>
@@ -33,4 +29,4 @@ function PersonalDetails() {
   );
 }
 
-export default PersonalDetails;
+export default PersonalDetailsPage;

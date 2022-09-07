@@ -9,11 +9,12 @@
   display: flex;
   justify-content: space-between;
   align-content: space-between;
-  margin-bottom: 100px;
+  /* margin-bottom: 100px; */
 }
 
 .personal-details-form-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }

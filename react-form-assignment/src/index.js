@@ -2,7 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import PersonalDetails from '../src/pages/forms/PersonalDetails'
+import LoginPage from '../src/pages/login'
+import PersonalDetails from './pages/forms/PersonalDetailsPage'
+import GovtIdDetailsPage from './pages/forms/GovtIdDetailsPage'
+import AddressDetailsPage from './pages/forms/AddressDetailsPage'
+
 import reportWebVitals from './reportWebVitals';
 import {
   BrowserRouter,
@@ -16,7 +20,10 @@ root.render(
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />} />
+      <Route path="loginPage" element={<LoginPage />} />
       <Route path="personalDetailsPage" element={<PersonalDetails />} />
+      <Route path="govtIdDetailsPage" element={<GovtIdDetailsPage />} />
+      <Route path="addressDetailsPage" element={<AddressDetailsPage />} />
       {/* <Route path="invoices" element={<Invoices />} /> */}
     </Routes>
   </BrowserRouter>,

@@ -1,7 +1,7 @@
 import "./login.css";
 import { Link } from "react-router-dom";
 
-function Login() {
+function LoginPage() {
   return (
     <div className="log-in-page">
       <div className="header">
@@ -29,4 +29,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default LoginPage;

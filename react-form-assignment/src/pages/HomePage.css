@@ -1,6 +1,4 @@
-
-
-.log-in-page{
+.home-page{
     margin-top: 100px;
     margin-left: auto;
     margin-right: auto;
@@ -15,19 +13,10 @@
     /* margin-bottom: 100px; */
 }
 
-.log-in-form-container{
+.company-logo-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.input-label{
-    margin-bottom: 25px;
-}
-
-.submit-btn-container{
-    display: flex;
-    justify-content: center;
-    align-content: center;
+    height: 300px;
 }

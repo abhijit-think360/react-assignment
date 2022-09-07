@@ -9,7 +9,7 @@ function LoginPage() {
         <span>Log In</span>
       </div>
       <div className="log-in-form-container">
-      <h1>Log in Page</h1>
+      <h1>Log in</h1>
 
         <form className="log-in-form">
           <label>E-mail :</label>

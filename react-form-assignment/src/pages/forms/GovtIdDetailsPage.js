@@ -10,7 +10,7 @@ function GovtIdDetailsPage() {
         <span>Log In</span>
       </div>
       <div className="govt-id-details-form-container">
-        <h1>Govt ID Details Page</h1>
+        <h1>Govt ID Details</h1>
         <form className="gov-id-details-form">
           <label>Aadhar Number :</label>
           <br />

@@ -6,6 +6,7 @@ import LoginPage from '../src/pages/login'
 import PersonalDetails from './pages/forms/PersonalDetailsPage'
 import GovtIdDetailsPage from './pages/forms/GovtIdDetailsPage'
 import AddressDetailsPage from './pages/forms/AddressDetailsPage'
+import SummaryPage from './pages/SummaryPage'
 
 import reportWebVitals from './reportWebVitals';
 import {
@@ -24,6 +25,8 @@ root.render(
       <Route path="personalDetailsPage" element={<PersonalDetails />} />
       <Route path="govtIdDetailsPage" element={<GovtIdDetailsPage />} />
       <Route path="addressDetailsPage" element={<AddressDetailsPage />} />
+      <Route path="summaryPage" element={<SummaryPage />} />
+
       {/* <Route path="invoices" element={<Invoices />} /> */}
     </Routes>
   </BrowserRouter>,

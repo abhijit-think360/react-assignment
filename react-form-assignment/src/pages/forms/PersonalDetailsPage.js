@@ -10,7 +10,7 @@ function PersonalDetailsPage() {
         <span>Log In</span>
       </div>
       <div className="personal-details-form-container">
-        <h1>Personal Details Page</h1>
+        <h1>Personal Details</h1>
         <form className="personal-details-form">
           <label>First Name :</label>
           <br />

@@ -10,7 +10,7 @@ function AddressDetailsPage() {
         <span>Log In</span>
       </div>
       <div className="address-details-form-container">
-        <h1>Address Details Page</h1>
+        <h1>Address Details</h1>
         <form className="address-details-form">
           <label>City :</label>
           <br />
@@ -20,8 +20,8 @@ function AddressDetailsPage() {
           <br />
           <input type="text" className="input-label" />
           <br />
-          <Link to='/addressDetailsPage'><div className="submit-btn-container">
-            <input type="submit" value="Next" />
+          <Link to='/summaryPage'><div className="submit-btn-container">
+            <input type="submit" value="Submit" />
           </div></Link>
           <br/>
           <Link to='/govtIdDetailsPage'><div className="submit-btn-container">

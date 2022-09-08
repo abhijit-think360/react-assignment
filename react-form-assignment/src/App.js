@@ -10,7 +10,9 @@ import AddressDetailsPage from "./pages/forms/AddressDetailsPage";
 // import SummaryPage from "./pages/SummaryPage";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React from "react";
 
+export const AppState = React.createContext();
 
 // import PersonalDetails from "./pages/forms/PersonalDetails";
 // import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
@@ -35,7 +37,8 @@ function App() {
     //   </div>
     // );
     // HomePage()
-    <BrowserRouter>
+    <AppState.Provider value="">
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="loginPage" element={<LoginPage />} />
@@ -47,6 +50,7 @@ function App() {
           {/* <Route path="invoices" element={<Invoices />} /> */}
         </Routes>
       </BrowserRouter>
+    </AppState.Provider>
   );
   // personalDetails());
 }

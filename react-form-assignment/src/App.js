@@ -1,8 +1,16 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Login from "./pages/login.js";
+// import Login from "./pages/login.js";
 import HomePage from "./pages/HomePage";
 import SummaryPage from "./pages/SummaryPage";
+import LoginPage from "../src/pages/login";
+import PersonalDetails from "./pages/forms/PersonalDetailsPage";
+import GovtIdDetailsPage from "./pages/forms/GovtIdDetailsPage";
+import AddressDetailsPage from "./pages/forms/AddressDetailsPage";
+// import SummaryPage from "./pages/SummaryPage";
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 
 // import PersonalDetails from "./pages/forms/PersonalDetails";
 // import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
@@ -26,7 +34,19 @@ function App() {
     //     </header>
     //   </div>
     // );
-    HomePage()
+    // HomePage()
+    <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="loginPage" element={<LoginPage />} />
+          <Route path="personalDetailsPage" element={<PersonalDetails />} />
+          <Route path="govtIdDetailsPage" element={<GovtIdDetailsPage />} />
+          <Route path="addressDetailsPage" element={<AddressDetailsPage />} />
+          <Route path="summaryPage" element={<SummaryPage />} />
+
+          {/* <Route path="invoices" element={<Invoices />} /> */}
+        </Routes>
+      </BrowserRouter>
   );
   // personalDetails());
 }

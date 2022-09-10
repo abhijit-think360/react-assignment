@@ -12,7 +12,7 @@ import AddressDetailsPage from "./pages/forms/AddressDetailsPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React from "react";
 
-export const AppState = React.createContext();
+export const AppContext = React.createContext();
 
 // import PersonalDetails from "./pages/forms/PersonalDetails";
 // import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
@@ -37,7 +37,7 @@ function App() {
     //   </div>
     // );
     // HomePage()
-    <AppState.Provider value="">
+    <AppContext.Provider value="">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -50,7 +50,7 @@ function App() {
           {/* <Route path="invoices" element={<Invoices />} /> */}
         </Routes>
       </BrowserRouter>
-    </AppState.Provider>
+    </AppContext.Provider>
   );
   // personalDetails());
 }

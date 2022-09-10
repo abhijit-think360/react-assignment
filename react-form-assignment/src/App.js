@@ -46,7 +46,6 @@ function App() {
           <Route path="govtIdDetailsPage" element={<GovtIdDetailsPage />} />
           <Route path="addressDetailsPage" element={<AddressDetailsPage />} />
           <Route path="summaryPage" element={<SummaryPage />} />
-
           {/* <Route path="invoices" element={<Invoices />} /> */}
         </Routes>
       </BrowserRouter>

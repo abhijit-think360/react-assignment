@@ -1,6 +1,7 @@
 import "./PersonalDetailsPage.css";
 import { useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useContext,useState } from "react";
+import { infoContext } from "../../infoContext";
 
 function PersonalDetailsPage() {
   const [firstName, setFirstName] = useState("");

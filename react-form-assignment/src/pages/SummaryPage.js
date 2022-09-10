@@ -13,6 +13,7 @@ function SummaryPage() {
           <h1>Summary</h1>
           <div className="personal-details-summary">
             <h3>Personal Details</h3>
+            <h3>localStorage.getElementById("firstName")</h3>
             <form className="summary-row summary-page-personal-details-form">
               <label>First Name :</label>
               <input type="text" className="input-label" />

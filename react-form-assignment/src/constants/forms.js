@@ -13,12 +13,12 @@ const forms = [
       },
       {
         label: "E-mail",
-        type: "text",
+        type: "email",
         elementId: "email",
       },
       {
         label: "Phone No.",
-        type: "text",
+        type: "tel",
         elementId: "phoneno",
       },
     ],
@@ -28,7 +28,7 @@ const forms = [
     govtIdDetails: [
       {
         label: "Aadhar Number",
-        type: "text",
+        type: "number",
         elementId: "aadharNumber",
       },
       {
@@ -43,7 +43,7 @@ const forms = [
     addressDetails: [
         {
             label: "Flat Number",
-            type: "text",
+            type: "number",
             elementId: "flatNumber",
           },
           {

@@ -120,7 +120,7 @@ function GovtIdDetailsPage() {
             <div>
               <label>{element.label + " :"}</label>
               <br />
-              <input type={element.type} className="input-label"></input>
+              <input type={element.type} className="input-label" required></input>
             </div>
           ))}
           <div className="govt-id-details-form-action-buttons">

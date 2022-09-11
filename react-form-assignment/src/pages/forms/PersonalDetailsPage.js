@@ -117,7 +117,7 @@ function PersonalDetailsPage() {
             <div>
               <label>{element.label + " :"}</label>
               <br />
-              <input type={element.type} className="input-label"></input>
+              <input type={element.type} className="input-label" required></input>
             </div>
           ))}
           <button type="submit">Next</button>

@@ -79,7 +79,7 @@ function AddressDetailsPage() {
             <div>
               <label>{element.label + " :"}</label>
               <br />
-              <input type={element.type} className="input-label"></input>
+              <input type={element.type} className="input-label" required></input>
             </div>
           ))}
           {/* <Link to="/govtIdDetailsPage">

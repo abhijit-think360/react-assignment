@@ -1,5 +1,5 @@
 import "./SummaryPage.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import forms from "../../constants/forms";
 import forms from "../constants/forms";
 
@@ -26,6 +26,12 @@ function SummaryPage() {
     if (forms[k].id == "Address Details") {
       addressDetailsMetaData = forms[k].addressDetails;
     }
+  }
+
+  let navigate = useNavigate();
+
+  function handleEdit() {
+    navigate("/personalDetailsPage");
   }
   return (
     <div className="summary-page">
@@ -82,45 +88,57 @@ function SummaryPage() {
       <div>
         <h1>Summary</h1>
         <div className="summary-container">
-          <h3>Personal Details</h3>
-          {personalDetailsMetaData.map((element) => {
-            return (
-              <div>
-                <div className="summary-item">
-                  <div className="summary-item-element">
-                    <span>{element.label}</span>
-                    <span>DummyData</span>
+          <div className="summary-section">
+            <h3>Personal Details</h3>
+            <div className="summary-section-content">
+              {personalDetailsMetaData.map((element) => {
+                return (
+                  <div className="summary-item">
+                    <div className="summary-item-element">
+                      <span>{element.label + ": "}</span>
+                      <span>DummyData</span>
+                    </div>
                   </div>
-                </div>
-              </div>
-            );
-          })}
-          <h3>Government ID Details</h3>
-          {govtIdDetailsMetaData.map((element) => {
-            return (
-              <div>
-                <div className="summary-item">
-                  <div className="summary-item-element">
-                    <span>{element.label}</span>
-                    <span>DummyData</span>
+                );
+              })}
+            </div>
+          </div>
+          <div className="summary-section">
+            <h3>Government ID Details</h3>
+            <div className="summary-section-content">
+              {govtIdDetailsMetaData.map((element) => {
+                return (
+                  <div className="summary-item">
+                    <div className="summary-item-element">
+                      <span>{element.label + ": "}</span>
+                      <span>DummyData</span>
+                    </div>
                   </div>
-                </div>
-              </div>
-            );
-          })}
-          <h3>Address Details</h3>
-          {addressDetailsMetaData.map((element) => {
-            return (
-              <div>
-                <div className="summary-item">
-                  <div className="summary-item-element">
-                    <span>{element.label}</span>
-                    <span>DummyData</span>
+                );
+              })}
+            </div>
+          </div>
+          <div className="summary-section">
+            <h3>Address Details</h3>
+            <div className="summary-section-content">
+              {addressDetailsMetaData.map((element) => {
+                return (
+                  <div className="summary-item">
+                    <div className="summary-item-element">
+                      <span>{element.label + ": "}</span>
+                      <span>DummyData</span>
+                    </div>
                   </div>
-                </div>
-              </div>
-            );
-          })}
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="summary-edit-button-container">
+            <button type="button" onClick={handleEdit}>
+              Edit
+            </button>
+          </div>
         </div>
       </div>
     </div>

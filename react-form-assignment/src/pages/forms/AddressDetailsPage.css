@@ -25,7 +25,16 @@
     justify-content: center;
     align-items: center;
   }
+
+  .address-details-form :last-child{
+    align-self: flex-end;
+  }
   
+.address-details-form-action-buttons{
+  display: flex;
+  justify-content: flex-end;
+}
+
   .input-label {
     margin-bottom: 25px;
   }

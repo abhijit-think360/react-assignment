@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import forms from "../../constants/forms";
 
-
 function AddressDetailsPage() {
   const [city, setCity] = useState("");
   const [addressState, setAddressState] = useState("");
@@ -29,6 +28,11 @@ function AddressDetailsPage() {
     localStorage.setItem("city", city);
     localStorage.setItem("addressState", addressState);
     navigate("/summaryPage");
+  }
+
+  function handlePrevious(e) {
+    e.preventDefault();
+    navigate("/govtIdDetailsPage");
   }
 
   return (
@@ -69,7 +73,7 @@ function AddressDetailsPage() {
         </form>
       </div> */}
       <div className="address-details-form-container">
-        <h1>Governmnet ID Details</h1>
+        <h1>Address Details</h1>
         <form className="address-details-form" onSubmit={onSubmit}>
           {inputFieldMetaData.map((element) => (
             <div>
@@ -78,12 +82,17 @@ function AddressDetailsPage() {
               <input type={element.type} className="input-label"></input>
             </div>
           ))}
-          <Link to="/govtIdDetailsPage">
+          {/* <Link to="/govtIdDetailsPage">
             <div className="submit-btn-container">
               <input type="submit" value="Previous" />
             </div>
-          </Link>
-          <button type="submit">Next</button>
+          </Link> */}
+          <div className='address-details-form-action-buttons'>
+            <button type="button" onClick={handlePrevious} style={{marginRight:'10px'}}>
+              Previous
+            </button>
+            <button type="submit">Next</button>
+          </div>
         </form>
       </div>
     </div>

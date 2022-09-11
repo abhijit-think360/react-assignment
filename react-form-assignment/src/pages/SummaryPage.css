@@ -13,8 +13,21 @@
     /* margin-bottom: 100px; */
 }
 
+.summary-edit-button-container{
+    display: flex;
+    justify-content: flex-end;
+}
+
 .summary-row{
     display:flex;
     justify-content: space-between;
     align-items:center;
 }
+
+.summary-section-content{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 10px;
+    padding-left: 20px;
+}
+

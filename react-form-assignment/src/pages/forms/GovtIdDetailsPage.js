@@ -42,6 +42,11 @@ function GovtIdDetailsPage() {
     navigate("/addressDetailsPage");
   }
 
+  function handlePrevious(e) {
+    e.preventDefault();
+    navigate("/personalDetailsPage");
+  }
+
   return (
     <div className="govt-id-details-page">
       <div className="header">
@@ -118,12 +123,12 @@ function GovtIdDetailsPage() {
               <input type={element.type} className="input-label"></input>
             </div>
           ))}
-          <Link to="/personalDetailsPage">
-            <div className="submit-btn-container">
-              <input type="submit" value="Previous" />
-            </div>
-          </Link>
-          <button type="submit">Next</button>
+          <div className="govt-id-details-form-action-buttons">
+            <button type="button" onClick={handlePrevious} style={{marginRight:'10px'}}>
+              Previous
+            </button>
+            <button type="submit">Next</button>
+          </div>
         </form>
       </div>
     </div>

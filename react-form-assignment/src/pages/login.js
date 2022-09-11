@@ -1,7 +1,23 @@
 import "./login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import users from "../constants/users.js";
 
 function LoginPage() {
+  let navigate = useNavigate();
+
+  function onSubmit(e) {
+    e.preventDefault();
+    const userName = e.target[0].value;
+    const password = e.target[1].value;
+    let i;
+    for (i = 0; i < users.length; i++) {
+      if (users[i].username == userName && users[i].password == password) {
+        navigate("/personalDetailsPage");
+      }
+    }
+  }
+
   return (
     <div className="log-in-page">
       <div className="header">
@@ -9,10 +25,10 @@ function LoginPage() {
         <span>Log In</span>
       </div>
       <div className="log-in-form-container">
-      <h1>Log in</h1>
+        <h1>Log in</h1>
 
-        <form className="log-in-form">
-          <label>E-mail :</label>
+        <form className="log-in-form" onSubmit={onSubmit}>
+          <label>Username :</label>
           <br />
           <input type="text" className="input-label" />
           <br />
@@ -20,9 +36,9 @@ function LoginPage() {
           <br />
           <input type="text" className="input-label" />
           <br />
-          <Link to='/personalDetailsPage'><div className="submit-btn-container">
-            <input type="submit" value="Log In" />
-          </div></Link>
+          <div className="submit-btn-container">
+            <button type="submit">Log In</button>
+          </div>
         </form>
       </div>
     </div>

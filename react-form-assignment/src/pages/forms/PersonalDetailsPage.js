@@ -1,16 +1,24 @@
 import "./PersonalDetailsPage.css";
 import { useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState ,useContext } from "react";
 // import App, {AppContext} from "App.js"
 // import App, {AppContext} from "../../App";
+import { infoContext } from "../../infoContext";
 import forms from "../../constants/forms";
+const axios = require("axios");
+
 
 function PersonalDetailsPage() {
   // const AppContext = useContext(AppContext);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-
+  // ---------------------usercontext----------------
+  // const [User, setUser] = useContext(infoContext);
+  // console.log(User);
+  // const username = User.hasOwnProperty("username")
+  // const username = User["username"]
+  // ---------------------usercontext----------------
   var inputFieldMetaData;
   let i;
   for (i = 0; i < forms.length; i++) {
@@ -34,7 +42,41 @@ function PersonalDetailsPage() {
     e.preventDefault();
     localStorage.setItem("firstName", firstName);
     localStorage.setItem("lastName", lastName);
+    // localStorage.setItem("savedEmail",savedEmail);
     // console.log(AppContext.firstName);
+// --------------------------------------------------
+  
+  // axios({
+  //   method: 'post',
+  //   url: 'http://localhost:8080/personalDetails',
+  //   data: {
+  //     "firstName": document.getElementById("First Name").textContent,
+  //     "lastName":  document.getElementById("Last Name").textContent,
+  //     // "firstName" : "abhishek"
+  //   }
+  // });
+
+    // ---------------------------------------------- 
+    // const Authorization ="anupam"
+    // const headers = {
+    //   [Authorization]: Authorization,
+    //   "Content-Type": "application/json",
+    // };
+
+    // ------------------------post_requet_call--------------------------
+    const body = { data: {  "username" : localStorage.getItem("username"),
+                            "firstName": document.getElementById("firstName").value,
+                            "lastName" : document.getElementById("lastName").value,
+                            "email" : document.getElementById("email").value,
+                            "phone" : document.getElementById("phoneno").value,
+                            }, to: "" };
+    let notificationResponse =  axios.post(
+      // "http://localhost:8080/personalDetails",
+      `http://localhost:8080/api/v1/addPersonalDetails`,
+      JSON.stringify(body),
+    );
+
+    // ------------------------post_requet_call-------------------------------
     navigate("/govtIdDetailsPage");
   }
 
@@ -114,10 +156,10 @@ function PersonalDetailsPage() {
         <h1>Personal Details</h1>
         <form className="personal-details-form" onSubmit={onSubmit}>
           {inputFieldMetaData.map((element) => (
-            <div>
+            <div >
               <label>{element.label + " :"}</label>
               <br />
-              <input type={element.type} className="input-label"></input>
+              <input type={element.type}  id={element.elementId} className="input-label"></input>
             </div>
           ))}
           <button type="submit">Next</button>

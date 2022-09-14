@@ -3,7 +3,7 @@ import forms from "../../constants/forms";
 
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
-
+const axios = require("axios");
 // forms.forEach(myFunction);
 // var myForm;
 // function myFunction(item){
@@ -39,6 +39,19 @@ function GovtIdDetailsPage() {
     e.preventDefault();
     localStorage.setItem("aadharNumber", aadharNumber);
     localStorage.setItem("panNumber", panNumber);
+
+    // -----------------------------post-request---------------------------------
+    const body = { data: {  "username" : localStorage.getItem("username"),
+                            "AadharNumber": document.getElementById("aadharNumber").value,
+                            "PanNumber" : document.getElementById("panNumber").value,
+                            }, to: "" };
+    let notificationResponse =  axios.post(
+      // "http://localhost:8080/personalDetails",
+      `http://localhost:8080/api/v1/addGovtIdDetails`,
+      JSON.stringify(body),
+    );
+    
+    // --------------------------------post-request-------------------------------
     navigate("/addressDetailsPage");
   }
 
@@ -120,7 +133,7 @@ function GovtIdDetailsPage() {
             <div>
               <label>{element.label + " :"}</label>
               <br />
-              <input type={element.type} className="input-label"></input>
+              <input type={element.type} id={element.elementId} className="input-label"></input>
             </div>
           ))}
           <div className="govt-id-details-form-action-buttons">

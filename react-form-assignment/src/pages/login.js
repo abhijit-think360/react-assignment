@@ -1,11 +1,12 @@
 import "./login.css";
 import { Link, useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState , useContext } from "react";
 import users from "../constants/users.js";
+import { infoContext } from "../infoContext";
 
 function LoginPage() {
   let navigate = useNavigate();
-
+  const [User, setUser] = useContext(infoContext);
   function onSubmit(e) {
     e.preventDefault();
     const userName = e.target[0].value;
@@ -13,6 +14,14 @@ function LoginPage() {
     let i;
     for (i = 0; i < users.length; i++) {
       if (users[i].username == userName && users[i].password == password) {
+        // ----------------------------usecontext------------
+        // const userObj = {
+        //   ...User,
+        // };
+        // userObj["username"] = userName;
+        // setUser(userObj);
+        // ----------------------------usecontext-------------
+        localStorage.setItem("username",userName)
         navigate("/personalDetailsPage");
       }
     }

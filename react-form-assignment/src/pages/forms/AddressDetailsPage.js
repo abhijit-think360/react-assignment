@@ -2,6 +2,7 @@ import "./AddressDetailsPage.css";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import forms from "../../constants/forms";
+const axios = require("axios");
 
 function AddressDetailsPage() {
   const [city, setCity] = useState("");
@@ -25,8 +26,22 @@ function AddressDetailsPage() {
 
   function onSubmit(e) {
     e.preventDefault();
-    localStorage.setItem("city", city);
-    localStorage.setItem("addressState", addressState);
+    // localStorage.setItem("city", city);
+    // localStorage.setItem("addressState", addressState);
+    // -----------------------------post-request---------------------------------
+    const body = { data: {  "username" : localStorage.getItem("username"),
+                            "FlatNumber": document.getElementById("flatNumber").value,
+                            "BuildingName" : document.getElementById("buildingName").value,
+                            "City" : document.getElementById("city").value,
+                            "State" : document.getElementById("addressState").value,
+                            }, to: "" };
+    let notificationResponse =  axios.post(
+      // "http://localhost:8080/personalDetails",
+      `http://localhost:8080/api/v1/addAddressDetails`,
+      JSON.stringify(body),
+    );
+    
+    // --------------------------------post-request-------------------------------
     navigate("/summaryPage");
   }
 
@@ -79,7 +94,7 @@ function AddressDetailsPage() {
             <div>
               <label>{element.label + " :"}</label>
               <br />
-              <input type={element.type} className="input-label"></input>
+              <input type={element.type} id={element.elementId} className="input-label"></input>
             </div>
           ))}
           {/* <Link to="/govtIdDetailsPage">

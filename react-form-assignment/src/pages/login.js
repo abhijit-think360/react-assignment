@@ -11,6 +11,7 @@ function LoginPage() {
     e.preventDefault();
     const userName = e.target[0].value;
     const password = e.target[1].value;
+    
     let i;
     for (i = 0; i < users.length; i++) {
       if (users[i].username == userName && users[i].password == password) {
@@ -25,6 +26,7 @@ function LoginPage() {
         navigate("/personalDetailsPage");
       }
     }
+
   }
 
   return (

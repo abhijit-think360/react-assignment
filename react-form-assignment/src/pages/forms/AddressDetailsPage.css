@@ -1,47 +1,46 @@
 .address-details-page {
-    margin-top: 100px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 800px;
-  }
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-content: space-between;
-    /* margin-bottom: 100px; */
-  }
-  
-  .address-details-form-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 800px;
+}
 
-  .address-details-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-content: space-between;
+  /* margin-bottom: 100px; */
+}
 
-  .address-details-form :last-child{
-    align-self: flex-end;
-  }
-  
-.address-details-form-action-buttons{
+.address-details-form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.address-details-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.address-details-form :last-child {
+  align-self: flex-end;
+}
+
+.address-details-form-action-buttons {
   display: flex;
   justify-content: flex-end;
 }
 
-  .input-label {
-    margin-bottom: 25px;
-  }
-  
-  .submit-btn-container {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-  }
-  
+.input-label {
+  margin-bottom: 25px;
+}
+
+.submit-btn-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}

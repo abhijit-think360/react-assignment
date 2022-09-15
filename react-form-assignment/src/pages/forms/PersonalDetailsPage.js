@@ -1,12 +1,11 @@
 import "./PersonalDetailsPage.css";
 import { useNavigate } from "react-router-dom";
-import React, { useState ,useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 // import App, {AppContext} from "App.js"
 // import App, {AppContext} from "../../App";
 import { infoContext } from "../../infoContext";
 import forms from "../../constants/forms";
 const axios = require("axios");
-
 
 function PersonalDetailsPage() {
   // const AppContext = useContext(AppContext);
@@ -16,7 +15,7 @@ function PersonalDetailsPage() {
   // ---------------------usercontext----------------
   // const [User, setUser] = useContext(infoContext);
   // console.log(User);
-  // const username = User.hasOwnProperty("username")
+  // const username = User.hasOwnProperty("username") ? User["username"] : ""
   // const username = User["username"]
   // ---------------------usercontext----------------
   var inputFieldMetaData;
@@ -37,6 +36,25 @@ function PersonalDetailsPage() {
     setLastName(e.target.value);
   }
   let navigate = useNavigate();
+  // ------------------------using_get_request---------------
+  // document.setItem("firstname",firstName)
+  // document.getElementById("firstName").value = "testing@gmail.com";
+  useEffect(() => {
+    console.log("hello ");
+    axios
+      .get("http://localhost:8080/api/v1/getPersonalDetails", {
+        params: {
+          username: localStorage.getItem("username"),
+        },
+      })
+      .then(function (response) {
+        document.getElementById("firstName").value = response.FirstName;
+        document.getElementById("lastName").value = response.LastName;
+        document.getElementById("email").value = response.Email;
+        document.getElementById("phoneno").value = response.Phone;
+      });
+  }, []);
+  // ------------------------using_get_request----------------
 
   function onSubmit(e) {
     e.preventDefault();
@@ -44,19 +62,19 @@ function PersonalDetailsPage() {
     localStorage.setItem("lastName", lastName);
     // localStorage.setItem("savedEmail",savedEmail);
     // console.log(AppContext.firstName);
-// --------------------------------------------------
-  
-  // axios({
-  //   method: 'post',
-  //   url: 'http://localhost:8080/personalDetails',
-  //   data: {
-  //     "firstName": document.getElementById("First Name").textContent,
-  //     "lastName":  document.getElementById("Last Name").textContent,
-  //     // "firstName" : "abhishek"
-  //   }
-  // });
+    // --------------------------------------------------
 
-    // ---------------------------------------------- 
+    // axios({
+    //   method: 'post',
+    //   url: 'http://localhost:8080/personalDetails',
+    //   data: {
+    //     "firstName": document.getElementById("First Name").textContent,
+    //     "lastName":  document.getElementById("Last Name").textContent,
+    //     // "firstName" : "abhishek"
+    //   }
+    // });
+
+    // ----------------------------------------------
     // const Authorization ="anupam"
     // const headers = {
     //   [Authorization]: Authorization,
@@ -64,22 +82,24 @@ function PersonalDetailsPage() {
     // };
 
     // ------------------------post_requet_call--------------------------
+
     // const body = { data: {  "username" : localStorage.getItem("username"),
     //                         "firstName": document.getElementById("firstName").value,
     //                         "lastName" : document.getElementById("lastName").value,
     //                         "email" : document.getElementById("email").value,
     //                         "phone" : document.getElementById("phoneno").value,
     //                         }, to: "" };
-    const body =  {  "username" : localStorage.getItem("username"),
-                            "firstName": document.getElementById("firstName").value,
-                            "lastName" : document.getElementById("lastName").value,
-                            "email" : document.getElementById("email").value,
-                            "phone" : document.getElementById("phoneno").value,
-                            };
-    let notificationResponse =  axios.post(
+    const body = {
+      username: localStorage.getItem("username"),
+      firstName: document.getElementById("firstName").value,
+      lastName: document.getElementById("lastName").value,
+      email: document.getElementById("email").value,
+      phone: document.getElementById("phoneno").value,
+    };
+    let notificationResponse = axios.post(
       // "http://localhost:8080/personalDetails",
       `http://localhost:8080/api/v1/addPersonalDetails`,
-      JSON.stringify(body),
+      JSON.stringify(body)
     );
 
     // ------------------------post_requet_call-------------------------------
@@ -162,10 +182,14 @@ function PersonalDetailsPage() {
         <h1>Personal Details</h1>
         <form className="personal-details-form" onSubmit={onSubmit}>
           {inputFieldMetaData.map((element) => (
-            <div >
+            <div>
               <label>{element.label + " :"}</label>
               <br />
-              <input type={element.type}  id={element.elementId} className="input-label"></input>
+              <input
+                type={element.type}
+                id={element.elementId}
+                className="input-label"
+              ></input>
             </div>
           ))}
           <button type="submit">Next</button>

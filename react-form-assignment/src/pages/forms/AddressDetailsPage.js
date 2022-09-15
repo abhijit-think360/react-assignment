@@ -24,23 +24,42 @@ function AddressDetailsPage() {
   }
   let navigate = useNavigate();
 
+  // ------------------------using_get_request---------------
+  // document.setItem("firstname",firstName)
+  // document.getElementById("firstName").value = "testing@gmail.com";
+  axios
+    .get("http://localhost:8080/api/v1/getaddGovtIdDetails", {
+      params: {
+        username: localStorage.getItem("username"),
+      },
+    })
+    .then(function (response) {
+      document.getElementById("FlatNumber").value = response.data.FlatNumber;
+      document.getElementById("BuildingName").value =
+        response.data.BuildingName;
+      document.getElementById("City").value = response.data.City;
+      document.getElementById("addressState").value = response.data.State;
+    });
+
+  // ------------------------using_get_request----------------
   function onSubmit(e) {
     e.preventDefault();
     // localStorage.setItem("city", city);
     // localStorage.setItem("addressState", addressState);
     // -----------------------------post-request---------------------------------
-    const body = {  "username" : localStorage.getItem("username"),
-                            "FlatNumber": document.getElementById("flatNumber").value,
-                            "BuildingName" : document.getElementById("buildingName").value,
-                            "City" : document.getElementById("city").value,
-                            "State" : document.getElementById("addressState").value,
-                            };
-    let notificationResponse =  axios.post(
+    const body = {
+      username: localStorage.getItem("username"),
+      FlatNumber: document.getElementById("flatNumber").value,
+      BuildingName: document.getElementById("buildingName").value,
+      City: document.getElementById("city").value,
+      State: document.getElementById("addressState").value,
+    };
+    let notificationResponse = axios.post(
       // "http://localhost:8080/personalDetails",
       `http://localhost:8080/api/v1/addAddressDetails`,
-      JSON.stringify(body),
+      JSON.stringify(body)
     );
-    
+
     // --------------------------------post-request-------------------------------
     navigate("/summaryPage");
   }
@@ -94,7 +113,11 @@ function AddressDetailsPage() {
             <div>
               <label>{element.label + " :"}</label>
               <br />
-              <input type={element.type} id={element.elementId} className="input-label"></input>
+              <input
+                type={element.type}
+                id={element.elementId}
+                className="input-label"
+              ></input>
             </div>
           ))}
           {/* <Link to="/govtIdDetailsPage">
@@ -102,8 +125,12 @@ function AddressDetailsPage() {
               <input type="submit" value="Previous" />
             </div>
           </Link> */}
-          <div className='address-details-form-action-buttons'>
-            <button type="button" onClick={handlePrevious} style={{marginRight:'10px'}}>
+          <div className="address-details-form-action-buttons">
+            <button
+              type="button"
+              onClick={handlePrevious}
+              style={{ marginRight: "10px" }}
+            >
               Previous
             </button>
             <button type="submit">Next</button>

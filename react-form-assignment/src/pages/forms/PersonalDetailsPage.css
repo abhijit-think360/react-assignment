@@ -19,14 +19,14 @@
   align-items: center;
 }
 
-.personal-details-form{
+.personal-details-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.personal-details-form :last-child{
+.personal-details-form :last-child {
   align-self: flex-end;
 }
 

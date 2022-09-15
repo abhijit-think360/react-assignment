@@ -35,22 +35,40 @@ function GovtIdDetailsPage() {
   }
   let navigate = useNavigate();
 
+  // ------------------------using_get_request---------------
+  // document.setItem("firstname",firstName)
+  // document.getElementById("firstName").value = "testing@gmail.com";
+  axios
+    .get("http://localhost:8080/api/v1/getaddGovtIdDetails", {
+      params: {
+        username: localStorage.getItem("username"),
+      },
+    })
+    .then(function (response) {
+      document.getElementById("AadharNumber").value = response.AadharNumber;
+      document.getElementById("panNumber").value = response.panNumber;
+      // document.getElementById("email").value = response.email
+      // document.getElementById("phoneno").value = response.phoneno
+    });
+
+  // ------------------------using_get_request----------------
   function onSubmit(e) {
     e.preventDefault();
     localStorage.setItem("aadharNumber", aadharNumber);
     localStorage.setItem("panNumber", panNumber);
 
     // -----------------------------post-request---------------------------------
-    const body = {  "username" : localStorage.getItem("username"),
-                            "AadharNumber": document.getElementById("aadharNumber").value,
-                            "PanNumber" : document.getElementById("panNumber").value,
-                            };
-    let notificationResponse =  axios.post(
+    const body = {
+      username: localStorage.getItem("username"),
+      AadharNumber: document.getElementById("aadharNumber").value,
+      PanNumber: document.getElementById("panNumber").value,
+    };
+    let notificationResponse = axios.post(
       // "http://localhost:8080/personalDetails",
       `http://localhost:8080/api/v1/addGovtIdDetails`,
-      JSON.stringify(body),
+      JSON.stringify(body)
     );
-    
+
     // --------------------------------post-request-------------------------------
     navigate("/addressDetailsPage");
   }
@@ -133,11 +151,19 @@ function GovtIdDetailsPage() {
             <div>
               <label>{element.label + " :"}</label>
               <br />
-              <input type={element.type} id={element.elementId} className="input-label"></input>
+              <input
+                type={element.type}
+                id={element.elementId}
+                className="input-label"
+              ></input>
             </div>
           ))}
           <div className="govt-id-details-form-action-buttons">
-            <button type="button" onClick={handlePrevious} style={{marginRight:'10px'}}>
+            <button
+              type="button"
+              onClick={handlePrevious}
+              style={{ marginRight: "10px" }}
+            >
               Previous
             </button>
             <button type="submit">Next</button>

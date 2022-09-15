@@ -2,6 +2,7 @@ import "./SummaryPage.css";
 import { Link, useNavigate } from "react-router-dom";
 // import forms from "../../constants/forms";
 import forms from "../constants/forms";
+const axios = require("axios");
 
 function SummaryPage() {
   var personalDetailsMetaData;
@@ -29,6 +30,53 @@ function SummaryPage() {
   }
 
   let navigate = useNavigate();
+
+  // ------------------------using_get_request---------------
+  // ________________________for_personal_info_____________
+  axios
+    .get("http://localhost:8080/api/v1/getPersonalDetails", {
+      params: {
+        username: localStorage.getItem("username"),
+      },
+    })
+    .then(function (response) {
+      document.getElementById("firstName").textContent = response.FirstName;
+      document.getElementById("lastName").textContent = response.LastName;
+      document.getElementById("email").textContent = response.Email;
+      document.getElementById("phoneno").textContent = response.Phone;
+    });
+
+  //  ___________________________for_gov_details__________________
+  axios
+    .get("http://localhost:8080/api/v1/getGovtIdDetails", {
+      params: {
+        username: localStorage.getItem("username"),
+      },
+    })
+    .then(function (response) {
+      document.getElementById("AadharNumber").textContent =
+        response.AadharNumber;
+      document.getElementById("panNumber").textContent = response.panNumber;
+      // document.getElementById("email").value = response.email
+      // document.getElementById("phoneno").value = response.phoneno
+    });
+
+  // ________________________adress_details_____________________
+  axios
+    .get("http://localhost:8080/api/v1/getAddressDetails", {
+      params: {
+        username: localStorage.getItem("username"),
+      },
+    })
+    .then(function (response) {
+      document.getElementById("FlatNumber").textContent = response.FlatNumber;
+      document.getElementById("BuildingName").textContent =
+        response.BuildingName;
+      document.getElementById("City").textContent = response.City;
+      document.getElementById("addressState").textContent =
+        response.addressState;
+    });
+  // ------------------------using_get_request----------------
 
   function handleEdit() {
     navigate("/personalDetailsPage");
@@ -96,7 +144,7 @@ function SummaryPage() {
                   <div className="summary-item">
                     <div className="summary-item-element">
                       <span>{element.label + ": "}</span>
-                      <span>DummyData</span>
+                      <span id={element.elementId}></span>
                     </div>
                   </div>
                 );
@@ -111,7 +159,7 @@ function SummaryPage() {
                   <div className="summary-item">
                     <div className="summary-item-element">
                       <span>{element.label + ": "}</span>
-                      <span>DummyData</span>
+                      <span id={element.elementId}></span>
                     </div>
                   </div>
                 );
@@ -126,7 +174,7 @@ function SummaryPage() {
                   <div className="summary-item">
                     <div className="summary-item-element">
                       <span>{element.label + ": "}</span>
-                      <span>DummyData</span>
+                      <span id={element.elementId}></span>
                     </div>
                   </div>
                 );

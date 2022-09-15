@@ -41,10 +41,10 @@ function GovtIdDetailsPage() {
     localStorage.setItem("panNumber", panNumber);
 
     // -----------------------------post-request---------------------------------
-    const body = { data: {  "username" : localStorage.getItem("username"),
+    const body = {  "username" : localStorage.getItem("username"),
                             "AadharNumber": document.getElementById("aadharNumber").value,
                             "PanNumber" : document.getElementById("panNumber").value,
-                            }, to: "" };
+                            };
     let notificationResponse =  axios.post(
       // "http://localhost:8080/personalDetails",
       `http://localhost:8080/api/v1/addGovtIdDetails`,

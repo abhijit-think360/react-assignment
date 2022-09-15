@@ -64,12 +64,18 @@ function PersonalDetailsPage() {
     // };
 
     // ------------------------post_requet_call--------------------------
-    const body = { data: {  "username" : localStorage.getItem("username"),
+    // const body = { data: {  "username" : localStorage.getItem("username"),
+    //                         "firstName": document.getElementById("firstName").value,
+    //                         "lastName" : document.getElementById("lastName").value,
+    //                         "email" : document.getElementById("email").value,
+    //                         "phone" : document.getElementById("phoneno").value,
+    //                         }, to: "" };
+    const body =  {  "username" : localStorage.getItem("username"),
                             "firstName": document.getElementById("firstName").value,
                             "lastName" : document.getElementById("lastName").value,
                             "email" : document.getElementById("email").value,
                             "phone" : document.getElementById("phoneno").value,
-                            }, to: "" };
+                            };
     let notificationResponse =  axios.post(
       // "http://localhost:8080/personalDetails",
       `http://localhost:8080/api/v1/addPersonalDetails`,

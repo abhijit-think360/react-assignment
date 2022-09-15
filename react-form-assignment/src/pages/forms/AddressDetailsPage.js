@@ -29,12 +29,12 @@ function AddressDetailsPage() {
     // localStorage.setItem("city", city);
     // localStorage.setItem("addressState", addressState);
     // -----------------------------post-request---------------------------------
-    const body = { data: {  "username" : localStorage.getItem("username"),
+    const body = {  "username" : localStorage.getItem("username"),
                             "FlatNumber": document.getElementById("flatNumber").value,
                             "BuildingName" : document.getElementById("buildingName").value,
                             "City" : document.getElementById("city").value,
                             "State" : document.getElementById("addressState").value,
-                            }, to: "" };
+                            };
     let notificationResponse =  axios.post(
       // "http://localhost:8080/personalDetails",
       `http://localhost:8080/api/v1/addAddressDetails`,
